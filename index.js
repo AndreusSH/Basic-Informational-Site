@@ -1,5 +1,17 @@
-const http = require('http')
-//create a server object:
+//const http = require('http')
+const express = require('express');
+const path = require('path');
+
+
+const app = express()
+const port = process.env.PORT || 8080
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'templates', '/home.html'))
+})
+
+app.listen(port)
+console.log('Server started at http://localhost:' + port)
+/*
 http
   .createServer(function (req, res) {
     if (req.url === '/') {
@@ -14,4 +26,4 @@ http
     res.end() //end the response
   })
   .listen(8080)
-//Server runs on localhost:8080
+*/
